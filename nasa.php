@@ -31,31 +31,8 @@ End date      <input type="text" name="endDate"/>
 function roverPhotos() {
   $apiKey = 'MJNM4W8Ot1jbNzCPVOVLBd5v381zqy7m57Rl9p6d';
   $cam = $_POST['rover'];
-  switch ($cam) {
-    case 'FHAZ':
-      $camInput = 'FHAZ';
-      break;
-    case 'RHAZ':
-      $camInput = 'RHAZ';
-      break;
-    case 'MAST':
-      $camInput = 'MAST';
-      break;
-    case 'CHEMCAM':
-      $camInput = 'CHEMCAM';
-      break;
-    case 'MAHLI':
-      $camInput = 'MAHLI';
-      break;
-    case 'MARDI':
-      $camInput = 'MARDI';
-      break;
-    default:
-      echo "Error. Please try again.";
-      break;
-  }
   $sol = rand(0, 1000);
-  $url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=". $sol ."&camera=". $camInput ."&api_key=". $apiKey;
+  $url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=". $sol ."&camera=". $cam ."&api_key=". $apiKey;
   $json = file_get_contents($url);
   $array = json_decode($json, true);
   echo '<div class="img">';
